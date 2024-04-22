@@ -3,7 +3,15 @@
 @tailwind utilities;
 
 @layer components {
-  .sidebar-item {
-    @apply bg-gray-100;
-  }
+    .sidebar-item, .sidebar-sub-item {
+        @apply font-bold text-gray-600 cursor-pointer hover:text-lime-700 active:text-lime-600 select-none;
+    }
+
+    .sidebar-item-with-subitems {
+        @apply font-light uppercase text-sm text-gray-500 select-none;
+    }
+
+    .active {
+        @apply text-lime-600;
+    }
 }
