@@ -15,3 +15,7 @@
         @apply text-lime-600;
     }
 }
+
+body {
+    @apply bg-gray-50;
+}

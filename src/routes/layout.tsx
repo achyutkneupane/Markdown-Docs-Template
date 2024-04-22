@@ -19,11 +19,11 @@ export default component$(() => {
         <>
             <Navbar />
             <div class="px-56">
-                <div class="flex justify-start align-middle pt-20">
-                    <div class="w-96 border h-screen fixed">
+                <div class="flex justify-start align-middle pt-20 divide-x">
+                    <div class="w-96 h-screen fixed">
                         <Sidebar/>
                     </div>
-                    <div class="ml-96 border w-full">
+                    <div class="ml-96 w-full p-2 bg-gray-50">
                         <Slot/>
                     </div>
                 </div>
