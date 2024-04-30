@@ -1,16 +1,14 @@
 import {component$, Fragment} from "@builder.io/qwik";
-import {sidebarItems} from "~/components/sidebarGenerator";
+import sidebarItems from "~/components/sidebarGenerator";
 import type {SidebarItemProps} from "~/types";
 import {routesAreSame} from "~/components/helpers";
 import {Link, useLocation} from '@builder.io/qwik-city';
-
-const items: SidebarItemProps[] = sidebarItems;
 
 const Sidebar = component$(() => {
 
     const loc = useLocation();
     const currentRoute = loc.url.pathname;
-
+    const items: SidebarItemProps[] = sidebarItems;
     return (
         <div class="px-4 py-2 flex flex-col gap-2 bg-gray-50 h-screen">
             {items.map((item: SidebarItemProps, index: number) => (
