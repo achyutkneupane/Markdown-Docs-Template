@@ -1,4 +1,9 @@
-function routesAreSame(routeOne: string, routeTwo: string) {
+import type {SidebarItemProps} from "~/types";
+
+function routesAreSame(routeOne?: string, routeTwo?: string) {
+    if (!routeOne || !routeTwo) {
+        return false;
+    }
     if (routeOne.endsWith('/')) {
         routeOne = routeOne.slice(0, -1);
     }
@@ -17,4 +22,20 @@ function labelParser(str: string) {
     return withoutSymbol.replaceAll(/\b\w/g, (char) => char.toUpperCase());
 }
 
-export { routesAreSame, labelParser };
+function firstLetterToUpperCase(str: string) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function routeParser(route: string): SidebarItemProps {
+    const noExtension = route.replace('.mdx', '');
+    const fullRouteWithoutRootFolder = noExtension.replace('/index', '/');
+    const label: string = fullRouteWithoutRootFolder.replaceAll('/', '').replace('-', ' ');
+    if (label === '') {
+        return { href: fullRouteWithoutRootFolder, label: 'Home' };
+    } else {
+        const flLabel = firstLetterToUpperCase(label);
+        return { href: fullRouteWithoutRootFolder, label: flLabel };
+    }
+}
+
+export { routesAreSame, labelParser, routeParser };
