@@ -1,30 +1,30 @@
-import type {SidebarItemProps} from "~/types";
+import {SidebarItemProps} from "~/types";
+import { parse } from 'yaml'
+import fs from 'fs';
+import path from 'path';
+import {labelParser} from "~/components/helpers";
 
-import fs from 'fs'
-import path from 'path'
-import {routeParser} from "~/components/helpers";
+const yamlFile = "./src/components/routes.yml";
+const fullPath = path.resolve(yamlFile);
+const file = fs.readFileSync(fullPath, 'utf8');
 
-const ROOT_PATH = 'src/routes';
+const parsedYML = parse(file).routes;
 
-const sidebarItems: SidebarItemProps[] = [];
+function extractRoutes(obj : any): SidebarItemProps[] {
+    const routes: SidebarItemProps[] = [];
 
-const getPagesInDirectory = (rootPath : string) => {
-    fs.readdirSync(rootPath)
-        .filter(file => !file.startsWith('_') && !file.startsWith('[') && !file.endsWith('.tsx'))
-        .map(file => {
-            const fullPath = path.join(rootPath, file);
-            if (fs.lstatSync(fullPath).isDirectory()) {
-                return getPagesInDirectory(fullPath);
+    obj?.forEach((item: any) => {
+        if (typeof item === 'object') {
+            for (const [key, values] of Object.entries(item)) {
+                routes.push({ label: labelParser(key), subItems: extractRoutes(values) });
             }
-            const folderWithoutRoot = fullPath.replace(ROOT_PATH, '');
-            const {href, label} : SidebarItemProps = routeParser(folderWithoutRoot);
-            sidebarItems.push({label, href});
-        });
+        } else {
+            routes.push({ label: labelParser(item), href: item });
+        }
+    });
+    return routes;
 }
 
-const allPaths = [ROOT_PATH];
-allPaths.flatMap(getPagesInDirectory);
-
-console.log(sidebarItems);
+const sidebarItems: SidebarItemProps[] = extractRoutes(parsedYML);
 
 export default sidebarItems;
