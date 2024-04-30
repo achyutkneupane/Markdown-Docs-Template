@@ -27,6 +27,4 @@ allPaths.flatMap(getPagesInDirectory);
 
 console.log(sidebarItems);
 
-
-
 export default sidebarItems;
