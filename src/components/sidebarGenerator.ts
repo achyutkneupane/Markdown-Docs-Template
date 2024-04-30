@@ -1,4 +1,4 @@
-import {SidebarItemProps} from "~/types";
+import type {SidebarItemProps} from "~/types";
 import { parse } from 'yaml'
 import fs from 'fs';
 import path from 'path';

@@ -1,6 +1,6 @@
 import {component$} from "@builder.io/qwik";
-import github from "/github.svg";
 import {appName, appVersion, githubUrl} from "~/variables";
+import ImgGithub from '../../public/github.svg?jsx';
 
 const Navbar = component$(() => {
     return (
@@ -15,7 +15,7 @@ const Navbar = component$(() => {
                     </div>
                     <div class="my-auto">
                         <a href={githubUrl} target="_blank">
-                            <img src={github} alt="github" width={30} height={30}/>
+                            <ImgGithub />
                         </a>
                     </div>
                 </div>
