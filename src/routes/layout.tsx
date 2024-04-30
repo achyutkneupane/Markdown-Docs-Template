@@ -1,7 +1,7 @@
 import {component$, Slot} from "@builder.io/qwik";
 import type {DocumentHead, RequestHandler} from "@builder.io/qwik-city";
-import Sidebar from "~/routes/Sidebar";
-import Navbar from "~/routes/Navbar";
+import Sidebar from "~/components/Sidebar";
+import Navbar from "~/components/Navbar";
 import {appName} from "~/variables";
 
 export const onGet: RequestHandler = async ({cacheControl}) => {

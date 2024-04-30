@@ -1,5 +1,5 @@
 import {component$, Fragment} from "@builder.io/qwik";
-import {sidebarItems} from "~/routes/sidebarGenerator";
+import {sidebarItems} from "~/components/sidebarGenerator";
 import type {SidebarItemProps} from "~/types";
 
 const items: SidebarItemProps[] = sidebarItems;
