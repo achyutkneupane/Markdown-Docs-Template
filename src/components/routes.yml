@@ -5,4 +5,5 @@ routes:
       - phone
       - email
   - products:
+      - home
       - all
