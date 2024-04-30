@@ -1,5 +1,5 @@
 import {component$} from "@builder.io/qwik";
-import github from "../../public/github.svg";
+import github from "/github.svg";
 import {appName, appVersion, githubUrl} from "~/variables";
 
 const Navbar = component$(() => {
