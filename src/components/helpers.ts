@@ -1,5 +1,3 @@
-import {SidebarItemProps} from "~/types";
-
 function routesAreSame(routeOne: string, routeTwo: string) {
     if (routeOne.endsWith('/')) {
         routeOne = routeOne.slice(0, -1);

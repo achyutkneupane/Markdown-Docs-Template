@@ -19,7 +19,11 @@ function extractRoutes(obj : any): SidebarItemProps[] {
                 routes.push({ label: labelParser(key), subItems: extractRoutes(values) });
             }
         } else {
-            routes.push({ label: labelParser(item), href: item });
+            if(item === 'home') {
+                routes.push({ label: 'Home', href: '/' });
+                return;
+            }
+            routes.push({ label: labelParser(item), href: `/${item}` });
         }
     });
     return routes;
