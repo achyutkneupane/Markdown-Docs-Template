@@ -1,0 +1,10 @@
+routes:
+  - home
+  - about
+  - contact-us:
+      - phone
+      - email
+  - products:
+      - home
+      - all
+  - achyut
