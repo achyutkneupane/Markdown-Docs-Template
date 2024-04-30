@@ -1,7 +1,8 @@
 import {component$, Slot} from "@builder.io/qwik";
-import type {RequestHandler} from "@builder.io/qwik-city";
+import type {DocumentHead, RequestHandler} from "@builder.io/qwik-city";
 import Sidebar from "~/routes/Sidebar";
 import Navbar from "~/routes/Navbar";
+import {appName} from "~/variables";
 
 export const onGet: RequestHandler = async ({cacheControl}) => {
     // Control caching for this request for best performance and to reduce hosting costs:
@@ -31,3 +32,9 @@ export default component$(() => {
         </>
     );
 });
+
+export const head: DocumentHead = ({ head }) => {
+    return {
+        title: `${head.title} - ${appName}`,
+    };
+};
