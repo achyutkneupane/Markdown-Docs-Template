@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import {labelParser, routeParser, routesAreSame} from "~/components/helpers";
 
-const yamlFile = "./src/components/routes.yml";
+const yamlFile = "./src/components/docs.yml";
 const fullPath = path.resolve(yamlFile);
 const file = fs.readFileSync(fullPath, 'utf8');
 const parsedYML = parse(file).routes;
