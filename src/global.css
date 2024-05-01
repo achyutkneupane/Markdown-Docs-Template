@@ -46,8 +46,8 @@ h6 {
     @apply text-base font-bold text-gray-800;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    @apply mb-2;
+h1, h2, h3, h4, h5, h6, blockquote, pre, hr {
+    @apply mt-4 mb-4;
 }
 
 p {
