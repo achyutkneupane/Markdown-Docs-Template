@@ -21,7 +21,11 @@ export default defineConfig(({ command, mode }): UserConfig => {
   return {
     plugins: [
         qwikCity(),
-        qwikVite(),
+        qwikVite({
+            client: {
+                outDir: "docs"
+            }
+        }),
         tsconfigPaths()
     ],
     // This tells Vite which dependencies to pre-build in dev mode.
